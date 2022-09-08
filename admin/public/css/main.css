@@ -1,0 +1,119 @@
+
+.content-wrapper .add_btn {
+    position: absolute;
+    z-index: 100;
+    top: 10px;
+    left: 10px;
+}
+
+.btn_back {
+    margin-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.btn_back i {
+    font-size: 40px;
+}
+
+.dataTables_filter {
+    margin-right: 10px;
+    margin-top: 8px;
+}
+
+#dataTable_wrapper tbody td {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+
+.dataTables_info {
+    padding-left: 10px !important;
+}
+
+.dataTables_paginate {
+    padding-right: 5px !important;
+    margin-bottom: 5px !important;
+}
+
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 3px grey;
+    border-radius: 10px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #8b8bec;
+    border-radius: 5px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #4a4aa5;
+}
+
+
+
+/** users **/
+
+.add-user-btn {
+    position: absolute;
+    top: 10px;
+    left: 1%;
+    z-index: 100;
+}
+
+/** user-actions at modal **/
+
+.user-actions .huquqlar-checkbox {
+    height: 370px;
+    overflow-y: scroll;
+}
+
+
+.user-actions input, .user-actions label {
+    cursor: pointer;
+}
+
+.back-btn-icon {
+    color: #0D6AAD;
+    font-size: 40px;
+    position: absolute;
+    top: 60px;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.table_hover tr:hover {
+    background: #c2c2cceb !important;
+}
+
+/** user add task modal check tasks **/
+
+.check_div {
+    overflow-y: scroll;
+    height: 370px;
+}
+
+.task-name-label:hover {
+    color: #049cd6;
+    cursor: pointer;
+}
+
+/** report **/
+.report-form {
+    position: absolute;
+    top: 8px;
+    left: 1%;
+    z-index: 100;
+    display: flex;
+}
+
+.report-form select {
+    border-color: #838282;
+}
