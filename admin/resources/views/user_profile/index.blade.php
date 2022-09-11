@@ -4,10 +4,10 @@
 
      <div class="content-wrapper">
         <div class="content-body">
-            <div class="card offset-3 col-md-6">
-                <h3 class="text-center text-info mt-2 mb-1">User edit</h3>
+            <div class="card">
+                <h3 class="text-center text-info mt-2 mb-1">Edit user</h3>
                 <form action="{{ route('user.user_profile_update', [$user->id]) }}" id="js_user_profile_update_from" method="POST">
-                    <div class="row mb-1">
+                    <div class="row mb-1 ml-1 mr-1">
                         @csrf
                         @method('PUT')
                         <div class="col-md-6 form-group">
@@ -23,9 +23,9 @@
                         </div>
 
                         <div class="col-md-6 form-group">
-                            <label for="login">Email</label>
-                            <input type="text" name="email" class="form-control js_email" id="email" value="{{ $user->email }}" readonly />
-                            <div class="invalid-feedback">The email field is required.</div>
+                            <label for="username">Email</label>
+                            <input type="text" name="username" class="form-control js_username" id="username" value="{{ $user->username }}" readonly />
+                            <div class="invalid-feedback">The username field is required.</div>
                         </div>
 
                         <div class="col-md-6 form-group">

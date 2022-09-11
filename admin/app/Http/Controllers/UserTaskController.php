@@ -12,7 +12,7 @@ class UserTaskController extends Controller
 {
 
     private function get_tasks() {
-        return Task::all();
+        return Task::whereNull('deleted_at')->get();
     }
 
     /**
@@ -27,6 +27,8 @@ class UserTaskController extends Controller
         $tasks = $this->get_tasks();
 
         $user_tasks = UserTask::all();
+        $user_tasks->load('user', 'task');
+
 
         return view('user_task.index', compact('employees','tasks', 'user_tasks'));
     }
@@ -51,6 +53,8 @@ class UserTaskController extends Controller
      */
     public function store(Request $request)
     {
+        return response()->json(['test' => $request->all()]);
+
         $error = Validator::make($request->all(), ['user_id' => 'required']);
 
         if ($error->fails()) {

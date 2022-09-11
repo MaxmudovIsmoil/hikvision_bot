@@ -13,6 +13,7 @@ class Task extends Model
     protected $fillable = [
         'name',
         'remind_time',
+        'deleted_at',
     ];
 
 }

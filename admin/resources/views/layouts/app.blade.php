@@ -108,27 +108,25 @@
                         <use xlink:href="{{ asset('/icons/sprites/free.svg#cil-bell')  }}"></use>
                     </svg>
                 </a></li>
-            <li class="c-header-nav-item d-md-down-none mx-2"><a class="c-header-nav-link" href="#">
-                    <svg class="c-icon">
-                        <use xlink:href="{{ asset('/icons/sprites/free.svg#cil-list-rich') }}"></use>
-                    </svg>
-                </a></li>
-            <li class="c-header-nav-item d-md-down-none mx-2"><a class="c-header-nav-link" href="#">
-                    <svg class="c-icon">
-                        <use xlink:href="{{ asset('/icons/sprites/free.svg#cil-envelope-open') }}"></use>
-                    </svg>
-                </a></li>
+{{--            <li class="c-header-nav-item d-md-down-none mx-2"><a class="c-header-nav-link" href="#">--}}
+{{--                    <svg class="c-icon">--}}
+{{--                        <use xlink:href="{{ asset('/icons/sprites/free.svg#cil-list-rich') }}"></use>--}}
+{{--                    </svg>--}}
+{{--                </a></li>--}}
             <li class="c-header-nav-item dropdown">
                 <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    <div class="c-avatar">user</div>
+                    <svg class="c-icon">
+                        <use xlink:href="{{ asset('/icons/sprites/free.svg#cil-user') }}"></use>
+                    </svg>
+                    <div class="c-avatar ml-2">{{ \Illuminate\Support\Facades\Auth::user()->username }}</div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right pt-0 pb-0">
 
-                    <a class="dropdown-item" href="{{ route('user.user_profile_show') }}">
+                    <a class="dropdown-item @if(Request::segment(1) == 'user-profile-show') active @endif" href="{{ route('user.user_profile_show') }}">
                         <svg class="c-icon mr-2">
                             <use xlink:href="{{ asset('/icons/sprites/free.svg#cil-settings') }}"></use>
                         </svg>
-                        Password update
+                        Setting profile
                     </a>
                     <a href="{{ route('logout') }}" class="dropdown-item"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

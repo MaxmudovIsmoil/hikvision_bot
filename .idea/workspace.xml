@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PhpIncludePathManager">
+  <component name="ChangeListManager">
+    <list default="true" id="065ad53c-62b4-41c2-8487-82f0f3a60ed9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/hikvision_bot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/hikvision_bot.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/app/Http/Controllers/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/app/Http/Controllers/TaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/app/Http/Controllers/UserTaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/app/Http/Controllers/UserTaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/app/Models/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/app/Models/Task.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/app/Models/UserTask.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/app/Models/UserTask.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/resources/views/user_profile/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/resources/views/user_profile/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/resources/views/user_task/add_edit_modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/resources/views/user_task/add_edit_modal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/resources/views/user_task/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/resources/views/user_task/index.blade.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/admin/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/admin/vendor/maennchen/zipstream-php" />
       <path value="$PROJECT_DIR$/admin/vendor/laminas/laminas-escaper" />
@@ -133,10 +162,35 @@
       <path value="$PROJECT_DIR$/admin/vendor/fruitcake/laravel-cors" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />
-  <component name="PhpUnit">
-    <phpunit_settings>
-      <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/admin/vendor/autoload.php" />
-    </phpunit_settings>
+  <component name="ProjectId" id="2EWo2H52DSJ0iNAEgmuYyamVZ72" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="065ad53c-62b4-41c2-8487-82f0f3a60ed9" name="Changes" comment="" />
+      <created>1662720494426</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1662720494426</updated>
+      <workItem from="1662720496659" duration="189000" />
+      <workItem from="1662792400055" duration="637000" />
+      <workItem from="1662874544820" duration="2193000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>

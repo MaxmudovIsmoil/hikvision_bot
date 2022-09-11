@@ -16,7 +16,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all();
+        $tasks = Task::whereNull('deleted_at')->get();
 
         return view('task.index', compact('tasks'));
     }
@@ -104,7 +104,7 @@ class TaskController extends Controller
     {
         try {
             $u = Task::findOrFail($id);
-            $u->delete();
+            $u->update(['deleted_at' => date('Y-m-d H:i:s')]);
 
             return response()->json(['status' => true, 'id' => $id]);
         }

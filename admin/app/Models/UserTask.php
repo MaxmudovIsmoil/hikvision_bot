@@ -20,8 +20,14 @@ class UserTask extends Model
     ];
 
 
-//    public function city()
-//    {
-//        return $this->hasOne(TaskDone::class, 'id', 'city_id');
-//    }
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
+    public function task()
+    {
+        return $this->hasOne(Task::class, 'id', 'task_id');
+    }
+
 }

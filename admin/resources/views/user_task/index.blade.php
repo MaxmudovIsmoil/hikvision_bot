@@ -2,14 +2,6 @@
 
 @section('content')
 
-    <div class="row">
-        <div class="btn-group mb-2 col-md-12" role="group">
-{{--            <a href="#" class="btn btn-primary">Barchasi</a>--}}
-            @foreach($employees as $employee)
-                <a href="{{ route('user-task.one_user_tasks', [$employee->id]) }}" class="btn btn-outline-primary">{{ $employee->full_name }}</a>
-            @endforeach
-        </div>
-    </div>
 
     <div class="form-modal-ex position-relative">
         <!-- Button trigger modal -->
@@ -24,7 +16,7 @@
             <thead class="table-light">
             <tr>
                 <th>№</th>
-                <th>Name</th>
+                <th>Full Name</th>
                 <th class="text-right">Actions</th>
             </tr>
             </thead>
@@ -34,9 +26,14 @@
 
                 <tr class="js_this_tr" data-id="{{ $t->id }}">
                     <td>{{ 1 + $loop->index }}</td>
-                    <td>{{ $t->name }}</td>
+                    <td>{{ optional($t->user)->full_name }}</td>
                     <td class="text-right">
                         <div class="d-flex justify-content-around">
+                            <a href="javascript:void(0);" class="text-info js_show_btn"
+                               data-one_task_url="{{ route('task.oneTask', [$t->id]) }}"
+                               title="show tasks">
+                                <i class="fas fa-eye mr-50"></i>
+                            </a>
                             <a href="javascript:void(0);" class="text-primary js_edit_btn"
                                data-one_task_url="{{ route('task.oneTask', [$t->id]) }}"
                                data-update_url="{{ route('task.update', [$t->id]) }}"
