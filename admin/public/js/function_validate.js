@@ -23,6 +23,10 @@ $(document).ready(function() {
 
     })
 
+    $('.js_user_id').on('input', function () {
+        $(this).removeClass('is-invalid')
+        $(this).siblings('.invalid-feedback').addClass('valid-feedback')
+    })
 
     $('.js_name').on('input', function () {
         $(this).removeClass('is-invalid')

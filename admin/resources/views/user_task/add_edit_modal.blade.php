@@ -13,47 +13,48 @@
                     <div class="row">
                         <div class="col-md-12 form-group mb-2">
                             <select name="user_id" class="form-control js_user_id">
-                                <option value="0">- Hodim -</option>
+                                <option value="">- Hodim -</option>
                                 @foreach($employees as $employee)
                                     <option value="{{ $employee->id }}">{{ $employee->full_name }}</option>
                                 @endforeach
                             </select>
-                        </div>
-{{--                        <div class="col-md-6">--}}
-{{--                            <select name="month" class="form-control js_month">--}}
-{{--                                <option @if(date("F") == 'January') selected @endif value="1">Yanvar</option>--}}
-{{--                                <option @if(date('F') == 'April') selected @endif value="2">Fevral</option>--}}
-{{--                                <option @if(date('F') == 'March') selected @endif value="3">Mart</option>--}}
-{{--                                <option @if(date('F') == 'April') selected @endif value="4">Aprel</option>--}}
-{{--                                <option @if(date('F') == 'May') selected @endif value="5">May</option>--}}
-{{--                                <option @if(date('F') == 'June') selected @endif value="6">Iyun</option>--}}
-{{--                                <option @if(date('F') == 'July') selected @endif value="7">Iyul</option>--}}
-{{--                                <option @if(date('F') == 'August') selected @endif value="8">Avgust</option>--}}
-{{--                                <option @if(date('F') == 'September') selected @endif value="9">Sentyabr</option>--}}
-{{--                                <option @if(date('F') == 'October') selected @endif value="10">Oktyabr</option>--}}
-{{--                                <option @if(date('F') == 'November') selected @endif value="11">Noyabr</option>--}}
-{{--                                <option @if(date('F') == 'December') selected @endif value="12">Dekabr</option>--}}
-{{--                            </select>--}}
-{{--                        </div>--}}
-                        <div class="col-md-6">
-                            <input type="number" name="day_off1" class="form-control js_day_off1" placeholder="1 - dam olish kuni"/>
-                            <div class="invalid-feedback">The day off 1 field is required.</div>
+                            <div class="invalid-feedback">Hodimni tanlang!</div>
                         </div>
                         <div class="col-md-6">
-                            <input type="number" name="day_off2" class="form-control js_day_off2" placeholder="2 - dam olish kuni" />
-                            <div class="invalid-feedback">The day off 2 field is required.</div>
+                            <select name="month" class="form-control js_month">
+                                <option @if(date("F") == 'January') selected @endif value="01">Yanvar</option>
+                                <option @if(date('F') == 'April') selected @endif value="02">Fevral</option>
+                                <option @if(date('F') == 'March') selected @endif value="03">Mart</option>
+                                <option @if(date('F') == 'April') selected @endif value="04">Aprel</option>
+                                <option @if(date('F') == 'May') selected @endif value="05">May</option>
+                                <option @if(date('F') == 'June') selected @endif value="06">Iyun</option>
+                                <option @if(date('F') == 'July') selected @endif value="07">Iyul</option>
+                                <option @if(date('F') == 'August') selected @endif value="08">Avgust</option>
+                                <option @if(date('F') == 'September') selected @endif value="09">Sentyabr</option>
+                                <option @if(date('F') == 'October') selected @endif value="10">Oktyabr</option>
+                                <option @if(date('F') == 'November') selected @endif value="11">Noyabr</option>
+                                <option @if(date('F') == 'December') selected @endif value="12">Dekabr</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="number" name="day_off1" class="form-control js_day_off1" placeholder="1"/>
+                            <div class="invalid-feedback">1 - dam olish kuni.</div>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="number" name="day_off2" class="form-control js_day_off2" placeholder="15" />
+                            <div class="invalid-feedback">2 - dam olish kuni.</div>
                         </div>
                     </div>
                     <p class="text-info text-center mb-0 mt-1">Vazifalar</p>
                     <div class="check_div">
                         @foreach($tasks as $t)
-                            <div class="d-flex justify-content-between">
+                            <div class="d-flex justify-content-between js_div" data-task_id="{{ $t->id }}">
                                 <div class="form-group form-check mb-0">
-                                    <input type="checkbox" class="form-check-input" id="task_{{ $t->id }}" name="tasks[]" value="{{ $t->id.",".$t->remind_time }}">
+                                    <input type="checkbox" class="form-check-input js_checkbox_input" id="task_{{ $t->id }}" name="tasks[]" value="{{ $t->id.";".$t->remind_time }}">
                                     <label class="form-check-label task-name-label" for="task_{{ $t->id }}">{{ $t->name }}</label>
                                 </div>
                                 <div class="time mr-1">
-                                    <input type="time" name="tasks[]" class="form-control form-control-sm" value="{{ $t->remind_time }}" disabled>
+                                    <input type="time" class="form-control form-control-sm js_time_input" value="{{ $t->remind_time }}" disabled>
                                 </div>
                             </div>
                             <hr class="mt-1 mb-1">

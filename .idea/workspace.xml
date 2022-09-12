@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="065ad53c-62b4-41c2-8487-82f0f3a60ed9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/hikvision_bot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/hikvision_bot.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/app/Http/Controllers/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/app/Http/Controllers/TaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/app/Http/Controllers/UserTaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/app/Http/Controllers/UserTaskController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/app/Models/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/app/Models/Task.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/app/Models/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/app/Models/UserTask.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/app/Models/UserTask.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/resources/views/user_profile/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/resources/views/user_profile/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/public/js/function_validate.js" beforeDir="false" afterPath="$PROJECT_DIR$/admin/public/js/function_validate.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/resources/views/user_task/add_edit_modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/resources/views/user_task/add_edit_modal.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/resources/views/user_task/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/resources/views/user_task/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,15 +164,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -187,6 +184,7 @@
       <workItem from="1662720496659" duration="189000" />
       <workItem from="1662792400055" duration="637000" />
       <workItem from="1662874544820" duration="2193000" />
+      <workItem from="1662954404716" duration="16301000" />
     </task>
     <servers />
   </component>

@@ -13,8 +13,10 @@ class UserTask extends Model
         'user_id',
         'task_id',
         'remind_time',
-        'start_day',
-        'end_day',
+        'day_off1',
+        'day_off2',
+        'month',
+        'year',
         'created_at',
         'updated_at',
     ];

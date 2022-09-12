@@ -10,11 +10,6 @@ use Illuminate\Support\Facades\Validator;
 
 class UserTaskController extends Controller
 {
-
-    private function get_tasks() {
-        return Task::whereNull('deleted_at')->get();
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -22,15 +17,12 @@ class UserTaskController extends Controller
      */
     public function index()
     {
-        $employees = User::where('rule', '!=', 'ADMIN')->get();
+        $employees = User::where('rule', '!=', 'ADMIN')->where('status', 1)->get();
+        $employees->load('user_task');
 
-        $tasks = $this->get_tasks();
+        $tasks = Task::whereNull('deleted_at')->get();
 
-        $user_tasks = UserTask::all();
-        $user_tasks->load('user', 'task');
-
-
-        return view('user_task.index', compact('employees','tasks', 'user_tasks'));
+        return view('user_task.index', compact('employees','tasks'));
     }
 
 
@@ -53,8 +45,6 @@ class UserTaskController extends Controller
      */
     public function store(Request $request)
     {
-        return response()->json(['test' => $request->all()]);
-
         $error = Validator::make($request->all(), ['user_id' => 'required']);
 
         if ($error->fails()) {
@@ -68,15 +58,21 @@ class UserTaskController extends Controller
                 $data = []; $i = 0;
                 foreach($request->tasks as $task) {
                     $data[$i]['user_id'] = $request->user_id;
-                    $data[$i]['task_id'] = $task;
+                    $data[$i]['task_id'] = explode(';', $task)[0];
+                    $data[$i]['remind_time'] = explode(';', $task)[1];
+                    $data[$i]['month'] = $request->month;
+                    $data[$i]['year'] = date('Y');
+                    $data[$i]['day_off1'] = $request->day_off1;
+                    $data[$i]['day_off2'] = $request->day_off2;
+                    $data[$i]['created_at'] = date('Y-m-d H:i:s');
+                    $data[$i]['updated_at'] = date('Y-m-d H:i:s');
                     $i++;
                 }
-//                return response()->json(['res' => $request->all(), 'data' => $data]);
                 UserTask::insert($data);
 
                 return response()->json(['status' => true, 'msg' => 'ok']);
-
-            } catch (\Exception $exception) {
+            }
+            catch (\Exception $exception) {
                 return response()->json(['status' => false, 'errors' => $exception->getMessage()]);
             }
         }
@@ -95,13 +91,23 @@ class UserTaskController extends Controller
         }
         else {
             try {
-                $product = UserTask::findOrFail($id);
-                $product->fill([
-                    'name'  => $request->name,
-                    'city_id' => $request->city_id,
-                    'updated_at'=> date('Y-m-d H:i:s'),
-                ]);
-                $product->save();
+                $data = []; $i = 0;
+                foreach($request->tasks as $task) {
+                    $data[$i]['user_id'] = $request->user_id;
+                    $data[$i]['task_id'] = explode(';', $task)[0];
+                    $data[$i]['remind_time'] = explode(';', $task)[1];
+                    $data[$i]['month'] = $request->month;
+                    $data[$i]['year'] = date('Y');
+                    $data[$i]['day_off1'] = $request->day_off1;
+                    $data[$i]['day_off2'] = $request->day_off2;
+                    $data[$i]['created_at'] = date('Y-m-d H:i:s');
+                    $data[$i]['updated_at'] = date('Y-m-d H:i:s');
+                    $i++;
+                }
+
+                UserTask::where(['user_id' => $request->user_id, 'month' => $request->month, 'year' => date('Y')])->delete();
+
+                UserTask::insert($data);
 
                 return response()->json(['status' => true, 'msg' => 'ok']);
             }
@@ -118,13 +124,12 @@ class UserTaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($user_id)
     {
         try {
-            $u = UserTask::findOrFail($id);
-            $u->delete();
+            UserTask::where(['user_id' => $user_id, 'month' => date('m'), 'year' => date('Y')])->delete();
 
-            return response()->json(['status' => true, 'id' => $id]);
+            return response()->json(['status' => true, 'id' => $user_id]);
         }
         catch (\Exception $exception) {
 

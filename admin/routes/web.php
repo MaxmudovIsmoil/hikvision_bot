@@ -50,6 +50,7 @@ Route::middleware(['auth', 'IsActive'])->group(function () {
         Route::group(['prefix' => '/'], function() {
             Route::resource('/user-task', UserTaskController::class)->except(['create', 'edit', 'show']);
             Route::get('/task-task/one-user-tasks/{id}', [UserTaskController::class, 'one_user_tasks'])->name('user-task.one_user_tasks');
+//            Route::post('/task-task/destroy/', [UserTaskController::class, 'destroy'])->name('user-task.destroy');
         });
         /******************** ./UserTask *************************/
 
