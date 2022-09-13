@@ -16,8 +16,8 @@
             <thead class="table-light">
                 <tr>
                     <th>№</th>
-                    <th>Full Name</th>
-                    <th class="text-right">Actions</th>
+                    <th>Hodim</th>
+                    <th class="text-right">Harakat</th>
                 </tr>
             </thead>
             <tbody>

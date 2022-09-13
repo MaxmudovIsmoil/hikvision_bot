@@ -4,21 +4,21 @@
 
     <div class="form-modal-ex position-relative">
         <!-- Button trigger modal -->
-        <form action="" class="report-form">
-            <select name="user_id" class="form-control js_user_id mr-3 col-md-8">
-                <option value="all">Barcha hodimlar</option>
-                @foreach($employees as $employee)
-                    <option value="{{ $employee->id }}">{{ $employee->full_name }}</option>
-                @endforeach
-            </select>
-            <select name="interval" class="form-control col-md-4 js_interval">
-                <option value="1">Kun</option>
-                <option value="2">Hafta</option>
-                <option value="3">Oy</option>
+        <form action="{{ route('report.get_report') }}" class="report-form js_form_report">
+            @csrf
+{{--            <select name="user_id" class="form-control js_user_id mr-3 col-md-8">--}}
+{{--                <option value="all">Barcha hodimlar</option>--}}
+{{--                @foreach($users as $user)--}}
+{{--                    <option value="{{ $user->id }}">{{ $user->full_name }}</option>--}}
+{{--                @endforeach--}}
+{{--            </select>--}}
+            <select name="interval" class="form-control js_interval">
+                <option value="1">Kun (Kechagi)</option>
+                <option value="2">Hafta (o'tgan)</option>
+                <option value="3" selected>Oy ({{ date('M') }})</option>
                 <option value="4">Yil</option>
             </select>
         </form>
-
     </div>
 
     <!-- list section start -->
@@ -27,37 +27,66 @@
             <thead class="table-light">
                 <tr>
                     <th>№</th>
-                    <th>City</th>
-                    <th>Name</th>
-                    <th class="text-right">Actions</th>
+                    <th>Hodim</th>
+                    <th class="text-center">Natija</th>
+{{--                    <th class="text-right">Harakat</th>--}}
                 </tr>
             </thead>
             <tbody>
-
-{{--            @foreach($outlet as $o)--}}
-{{--                <tr class="js_this_tr" data-id="{{ $o->id }}">--}}
-{{--                    <td>{{ 1 + $loop->index }}</td>--}}
-{{--                    <td>{{ optional($o->city)->name }}</td>--}}
-{{--                    <td>{{ $o->name }}</td>--}}
-{{--                    <td class="text-right">--}}
-{{--                        <div class="d-flex justify-content-around">--}}
-{{--                            <a href="javascript:void(0);" class="text-primary js_edit_btn"--}}
-{{--                               data-one_outlet_url="{{ route('report.oneOutlet', [$o->id]) }}"--}}
-{{--                               data-update_url="{{ route('report.update', [$o->id]) }}"--}}
-{{--                               title="Edit">--}}
-{{--                                <i class="fas fa-pen mr-50"></i>--}}
-{{--                            </a>--}}
-{{--                            <a class="text-danger js_delete_btn" href="javascript:void(0);"--}}
-{{--                               data-toggle="modal"--}}
-{{--                               data-target="#deleteModal"--}}
-{{--                               data-name="{{ $o->name }}"--}}
-{{--                               data-url="{{ route('report.destroy', [$o->id]) }}" title="Delete">--}}
-{{--                                <i class="far fa-trash-alt mr-50"></i>--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
-{{--                    </td>--}}
-{{--                </tr>--}}
-{{--            @endforeach--}}
+            @php $i = 1; $done = 0; $failed = 0; $no_click = 0; @endphp
+            @foreach($users as $user)
+                @if ($user->user_task_done->count())
+                    <tr class="js_this_tr" data-id="{{ $user->id }}">
+                        <td>{{ $i++ }}</td>
+                        <td>{{ $user->full_name }}</td>
+                        <td class="text-center">
+                            @foreach($user->user_task_done as $task_done)
+                                @if(date('m', strtotime($task_done->created_at)) == date('m'))
+                                    @php
+                                        if ($task_done->status == 1)
+                                            $done++;
+                                        if ($task_done->status == -1)
+                                            $failed++;
+                                        if ($task_done->status == 0)
+                                            $no_click++;
+                                    @endphp
+                                @endif
+                            @endforeach
+                            <span class="mr-1">
+                                <span class="badge badge-success badge-pill">
+                                    {{ $done }} <i class="fas fa-check mr-1"></i>
+                                    <i class="fas fa-right-long mr-1"></i>
+                                    {{ number_format($done * 100 / ($done + $failed + $no_click), 1, ".", " ") }} <i class="fa-solid fa-percent mr-1"></i>
+                                </span>
+                                Bajarilgan,
+                            </span>
+                            <span class="mr-1">
+                                <span class="badge badge-danger badge-pill">
+                                    {{ $failed }} <i class="fas fa-times mr-1"></i>
+                                    <i class="fas fa-right-long mr-1"></i>
+                                    {{ number_format($failed * 100 / ($done + $failed + $no_click), 1, ".", " ") }} <i class="fa-solid fa-percent mr-1"></i>
+                                </span>
+                                Bajarilmagan,
+                            </span>
+                            <span class="mr-1">
+                                <span class="badge badge-pill badge-warning">
+                                    {{ $no_click }} <i class="fa-solid fa-question mr-1"></i>
+                                    <i class="fas fa-right-long mr-1"></i>
+                                    {{ number_format($no_click * 100 / ($done + $failed + $no_click), 1, ".", " ") }} <i class="fa-solid fa-percent mr-1"></i>
+                                </span>
+                                E'tiborsiz qoldirilgan
+                            </span>
+                        </td>
+{{--                        <td class="text-right">--}}
+{{--                            <div class="d-flex justify-content-around">--}}
+{{--                                <a href="javascript:void(0);" class="text-info" title="Ko'rish">--}}
+{{--                                    <i class="fas fa-eye mr-50"></i>--}}
+{{--                                </a>--}}
+{{--                            </div>--}}
+{{--                        </td>--}}
+                    </tr>
+                @endif
+            @endforeach
 
             </tbody>
         </table>
@@ -73,15 +102,7 @@
 
     <script>
 
-        function user_form_clear(form) {
-            form.find(".js_name").val('')
-            form.find('.js_city option:selected').attr('selected', false)
-            form.remove('input[name="_method"]');
-        }
-
         $(document).ready(function () {
-            var modal = $('#add_edit_modal');
-            var form = modal.find('.js_add_edit_form');
 
             $('#datatable').DataTable({
                 scrollY: '70vh',
@@ -99,55 +120,10 @@
                 }
             });
 
-            $(document).on('click', '.js_add_btn', function () {
-                let url = $(this).data('url')
 
-                form.attr('action', url)
-                user_form_clear(form)
-                modal.find('.modal-title').html('Add Userdone')
-                modal.modal('show')
-            })
-
-
-            $(document).on('click', '.js_edit_btn', function () {
-
-                let one_url = $(this).data('one_outlet_url')
-                let update_url = $(this).data('update_url')
-                user_form_clear(form)
-
-                form.attr('action', update_url)
-                form.append('<input type="hidden" name="_method" value="PUT">')
-                $.ajax({
-                    type: 'GET',
-                    url: one_url,
-                    dataType: 'JSON',
-                    success: (response) => {
-
-                        if (response.status)
-                            form.find('.js_name').val(response.outlet.name)
-
-                        let city = form.find('.js_city option')
-                        $.each(city, function(i, item) {
-                            if ($(item).val() == response.outlet.city_id)
-                                $(item).attr('selected', true)
-                            else
-                                $(item).attr('selected', false)
-                        })
-
-                        modal.find('.modal-title').html('Edit Userdone')
-                        modal.modal('show')
-                    },
-                    error: (response) => {
-                        console.log('error: ', response)
-                    }
-                })
-            })
-
-
-            /** Userdone submit store or update **/
-            $('.js_add_edit_form').on('submit', function (e) {
+            $('.js_interval').on('change', function (e) {
                 e.preventDefault()
-                let form = $(this)
+                let form = $(this).closest('.js_form_report')
                 let action = form.attr('action')
 
                 $.ajax({
@@ -158,14 +134,11 @@
                     success: (response) => {
                         console.log('res: ', response)
 
-                        if (response.status)
-                            location.reload()
-
-                        if (typeof response.errors !== 'undefined') {
-                            if (response.errors.name)
-                                form.find('.js_name').addClass('is-invalid')
+                        if (response.status) {
+                            $('#datatable tbody').html(response.result)
                         }
-                    },
+
+                     },
                     error: (response) => {
                         console.log('error: ', response)
                     }

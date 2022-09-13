@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="3aaa4f61-ba5c-4d79-bb3f-d064d4dc1e6d" name="test_server_bot">
+        <fileTransfer rootFolder="/home/ismoil/bot/" accessType="SFTP" host="10.70.34.14" port="22" sshConfigId="0947c9dc-ebbf-44e1-af2c-99b323ad016e" sshConfig="root@10.70.34.14:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
