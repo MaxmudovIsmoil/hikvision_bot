@@ -53,6 +53,7 @@ class ReportController extends Controller
                 ->groupBy('td.user_id')
                 ->get();
 
+            // return response()->json(['res' => $users_tasks]);
 
 
             $users = User::where('rule', '!=', 'ADMIN')->get();
@@ -122,7 +123,7 @@ class ReportController extends Controller
                     }
 
 
-                $html .= '<span class="mr-1">
+                    $html .= '<span class="mr-1">
                             <span class="badge badge-success badge-pill">
                                 '.$done.' <i class="fas fa-check mr-1"></i>
                                 <i class="fas fa-right-long mr-1"></i>
@@ -151,7 +152,7 @@ class ReportController extends Controller
                         </span>
                     </td>
                 </tr>';
-             }
+                }
             }
 
             return response()->json(['status' => true, 'result' => $html, '$a' => $a, '$b' => $b]);

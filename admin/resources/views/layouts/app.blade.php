@@ -51,28 +51,28 @@
                 <svg class="c-sidebar-nav-icon">
                     <use xlink:href="{{ asset('/icons/sprites/free.svg#cil-user') }}"></use>
                 </svg>
-                Users
+                Hodimlar
             </a>
         </li>
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link @if(Request::segment(1) == 'task') active @endif" href="{{ route('task.index') }}">
                 <svg class="c-sidebar-nav-icon">
                     <use xlink:href="{{ asset('/icons/sprites/free.svg#cil-layers') }}"></use>
-                </svg> Tasks
+                </svg> Vazifalar
             </a>
         </li>
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link @if(Request::segment(1) == 'user-task') active @endif" href="{{ route('user-task.index') }}">
                 <svg class="c-sidebar-nav-icon">
-                    <use xlink:href="{{ asset('/icons/sprites/free.svg#cil-user') }}"></use>
-                </svg> User Tasks
+                    <use xlink:href="{{ asset('/icons/sprites/free.svg#cil-address-book') }}"></use>
+                </svg> Hodim vazifalari
             </a>
         </li>
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link @if(Request::segment(1) == 'report') active @endif" href="{{ route('report.index') }}">
                 <svg class="c-sidebar-nav-icon">
-                    <use xlink:href="{{ asset('/icons/sprites/free.svg#cil-user') }}"></use>
-                </svg> Report
+                    <use xlink:href="{{ asset('/icons/sprites/free.svg#cil-bar-chart') }}"></use>
+                </svg> Statistika
             </a>
         </li>
 

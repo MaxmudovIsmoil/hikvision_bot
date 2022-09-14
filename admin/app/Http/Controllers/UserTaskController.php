@@ -81,7 +81,7 @@ class UserTaskController extends Controller
 
     public function update(Request $request, $id)
     {
-        $validation = Validator::make($request->all(), ['user_id' => 'required']);
+        $validation = Validator::make($request->all(), ['month' => 'required']);
 
         if ($validation->fails()) {
             return response()->json([
@@ -91,6 +91,12 @@ class UserTaskController extends Controller
         }
         else {
             try {
+                if ($request->day_off1 < 10)
+                    $request->day_off1 = "0".$request->day_off1;
+
+                if ($request->day_off2 < 10)
+                    $request->day_off2 = "0".$request->day_off2;
+
                 $data = []; $i = 0;
                 foreach($request->tasks as $task) {
                     $data[$i]['user_id'] = $request->user_id;

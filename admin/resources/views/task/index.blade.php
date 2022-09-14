@@ -4,8 +4,8 @@
 
     <div class="form-modal-ex position-relative">
         <!-- Button trigger modal -->
-        <a href="javascript:void(0);" data-url="" class="btn btn-outline-primary add-user-btn js_add_btn">add Task</a>
-        <h3 class="text-center text-primary position-absolute" style="z-index: 1; left: 45%; top: 12px;"> Tasks</h3>
+        <a href="javascript:void(0);" data-url="" class="btn btn-outline-primary add-user-btn js_add_btn">vazifa <i class="fas fa-plus"></i></a>
+        <h3 class="text-center text-primary position-absolute" style="z-index: 1; left: 45%; top: 12px;"> Vazifalar</h3>
         <!-- Modal -->
     </div>
 
@@ -15,9 +15,9 @@
             <thead class="table-light">
             <tr>
                 <th>№</th>
-                <th>Name</th>
-                <th>Time</th>
-                <th class="text-right">Actions</th>
+                <th>Nomi</th>
+                <th>Vaqti</th>
+                <th class="text-right">Harakat</th>
             </tr>
             </thead>
             <tbody>
@@ -85,7 +85,7 @@
                 autoWidth: true,
                 language: {
                     search: "",
-                    searchPlaceholder: " Search...",
+                    searchPlaceholder: " Izlash...",
                 }
             });
 
@@ -94,7 +94,7 @@
 
                 form.attr('action', url)
                 user_form_clear(form)
-                modal.find('.modal-title').html('add Task')
+                modal.find('.modal-title').html('Vazifa qo\'shish');
                 modal.modal('show')
             })
 
@@ -118,7 +118,7 @@
                             form.find('.js_name').val(response.task.name)
                             form.find('.js_remind_time').val(response.task.remind_time)
                         }
-                        modal.find('.modal-title').html('edit Task')
+                        modal.find('.modal-title').html('Vazifa taxtirlash')
                         modal.modal('show')
                     },
                     error: (response) => {

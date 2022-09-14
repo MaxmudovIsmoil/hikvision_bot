@@ -23,6 +23,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Auth::routes();
 
 
+
 Route::middleware(['auth', 'IsActive'])->group(function () {
 
 //    Admin

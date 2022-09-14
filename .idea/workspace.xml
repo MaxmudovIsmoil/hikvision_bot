@@ -2,13 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="065ad53c-62b4-41c2-8487-82f0f3a60ed9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/admin/public/bot.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/public/libs/Database.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/public/libs/Telegram.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/text.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/app/Http/Controllers/ReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/app/Http/Controllers/ReportController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/resources/views/report/add_edit_modal.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/app/Http/Controllers/UserTaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/app/Http/Controllers/UserTaskController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/resources/views/report/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/resources/views/report/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/resources/views/task/add_edit_modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/resources/views/task/add_edit_modal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/resources/views/task/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/resources/views/task/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/resources/views/user_task/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/resources/views/user_task/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/resources/views/users/add_edit_modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/resources/views/users/add_edit_modal.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bot.php" beforeDir="false" afterPath="$PROJECT_DIR$/bot.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hikvision_bot_db.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/libs/Database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libs/Telegram.php" beforeDir="false" afterPath="$PROJECT_DIR$/libs/Telegram.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/remind.php" beforeDir="false" afterPath="$PROJECT_DIR$/remind.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,20 +177,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "true",
-    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
-    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
-    "WebServerToolWindowPanel.toolwindow.show.date": "false",
-    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
-    "WebServerToolWindowPanel.toolwindow.show.size": "false",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/xampp/htdocs/hikvision_bot/admin/public&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\hikvision_bot\admin\public" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\hikvision_bot\admin\public\bot" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -189,7 +212,9 @@
       <workItem from="1662792400055" duration="637000" />
       <workItem from="1662874544820" duration="2193000" />
       <workItem from="1662954404716" duration="16818000" />
-      <workItem from="1663039482528" duration="21424000" />
+      <workItem from="1663039482528" duration="29565000" />
+      <workItem from="1663127893848" duration="10499000" />
+      <workItem from="1663147628689" duration="9084000" />
     </task>
     <servers />
   </component>

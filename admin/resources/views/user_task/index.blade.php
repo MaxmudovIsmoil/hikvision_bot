@@ -69,7 +69,7 @@
                 $(one_option).removeAttr('selected');
             });
             form.find('.js_user_id').removeAttr('disabled');
-
+            form.remove('input[name="user_id"]>')
             let div = $('.js_div')
             $.each(div, function(i, one_div){
                 $(one_div).find('.js_checkbox_input').removeAttr('checked');
@@ -157,6 +157,7 @@
                                     $(one_option).attr('selected', 'true');
                                 }
                             });
+                            form.append('<input type="hidden" name="user_id" value="'+response.user_tasks[0].user_id+'">')
                             form.find('.js_user_id').attr('disabled', true);
 
                             form.find('.js_day_off1').val(response.user_tasks[0].day_off1);
@@ -178,7 +179,7 @@
                             });
 
                         }
-                        modal.find('.modal-title').html('Vazifa taxrirlash');
+                        modal.find('.modal-title').html('Vazifa vazifalarini taxrirlash');
                         modal.modal('show');
                     },
                     error: (response) => {

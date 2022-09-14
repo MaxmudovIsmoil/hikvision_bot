@@ -6,12 +6,12 @@
         <!-- Button trigger modal -->
         <form action="{{ route('report.get_report') }}" class="report-form js_form_report">
             @csrf
-{{--            <select name="user_id" class="form-control js_user_id mr-3 col-md-8">--}}
-{{--                <option value="all">Barcha hodimlar</option>--}}
-{{--                @foreach($users as $user)--}}
-{{--                    <option value="{{ $user->id }}">{{ $user->full_name }}</option>--}}
-{{--                @endforeach--}}
-{{--            </select>--}}
+            {{--            <select name="user_id" class="form-control js_user_id mr-3 col-md-8">--}}
+            {{--                <option value="all">Barcha hodimlar</option>--}}
+            {{--                @foreach($users as $user)--}}
+            {{--                    <option value="{{ $user->id }}">{{ $user->full_name }}</option>--}}
+            {{--                @endforeach--}}
+            {{--            </select>--}}
             <select name="interval" class="form-control js_interval">
                 <option value="1">Kun (Kechagi)</option>
                 <option value="2">Hafta (o'tgan)</option>
@@ -25,65 +25,79 @@
     <div class="card">
         <table class="table table-striped w-100 table_hover" id="datatable">
             <thead class="table-light">
-                <tr>
-                    <th>№</th>
-                    <th>Hodim</th>
-                    <th class="text-center">Natija</th>
-{{--                    <th class="text-right">Harakat</th>--}}
-                </tr>
+            <tr>
+                <th>№</th>
+{{--                <th>test</th>--}}
+                <th>Hodim</th>
+                <th class="text-center">Natija</th>
+{{--                                    <th class="text-right">Harakat</th>--}}
+            </tr>
             </thead>
             <tbody>
-            @php $i = 1; $done = 0; $failed = 0; $no_click = 0; @endphp
+            @php $i = 1; $success = 0; $cancel = 0; $wait = 0; @endphp
             @foreach($users as $user)
                 @if ($user->user_task_done->count())
                     <tr class="js_this_tr" data-id="{{ $user->id }}">
                         <td>{{ $i++ }}</td>
                         <td>{{ $user->full_name }}</td>
+{{--                        <td>--}}
+{{--                            <div class="clearfix">--}}
+{{--                                <div class="float-start">--}}
+{{--                                    <strong>50%</strong>--}}
+{{--                                </div>--}}
+{{--                                <div class="float-end">--}}
+{{--                                    --}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="progress progress-thin">--}}
+{{--                                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div>--}}
+{{--                            </div>--}}
+{{--                        </td>--}}
                         <td class="text-center">
                             @foreach($user->user_task_done as $task_done)
                                 @if(date('m', strtotime($task_done->created_at)) == date('m'))
                                     @php
                                         if ($task_done->status == 1)
-                                            $done++;
+                                            $success++;
                                         if ($task_done->status == -1)
-                                            $failed++;
+                                            $cancel++;
                                         if ($task_done->status == 0)
-                                            $no_click++;
+                                            $wait++;
                                     @endphp
                                 @endif
                             @endforeach
                             <span class="mr-1">
                                 <span class="badge badge-success badge-pill">
-                                    {{ $done }} <i class="fas fa-check mr-1"></i>
+                                    {{ $success }} <i class="fas fa-check mr-1"></i>
                                     <i class="fas fa-right-long mr-1"></i>
-                                    {{ number_format($done * 100 / ($done + $failed + $no_click), 1, ".", " ") }} <i class="fa-solid fa-percent mr-1"></i>
+                                    {{ number_format($success * 100 / ($success + $cancel + $wait), 1, ".", " ") }} <i class="fa-solid fa-percent mr-1"></i>
                                 </span>
                                 Bajarilgan,
                             </span>
                             <span class="mr-1">
                                 <span class="badge badge-danger badge-pill">
-                                    {{ $failed }} <i class="fas fa-times mr-1"></i>
+                                    {{ $cancel }} <i class="fas fa-times mr-1"></i>
                                     <i class="fas fa-right-long mr-1"></i>
-                                    {{ number_format($failed * 100 / ($done + $failed + $no_click), 1, ".", " ") }} <i class="fa-solid fa-percent mr-1"></i>
+                                    {{ number_format($cancel * 100 / ($success + $cancel + $wait), 1, ".", " ") }} <i class="fa-solid fa-percent mr-1"></i>
                                 </span>
                                 Bajarilmagan,
                             </span>
                             <span class="mr-1">
                                 <span class="badge badge-pill badge-warning">
-                                    {{ $no_click }} <i class="fa-solid fa-question mr-1"></i>
+                                    {{ $wait }} <i class="fa-solid fa-question mr-1"></i>
                                     <i class="fas fa-right-long mr-1"></i>
-                                    {{ number_format($no_click * 100 / ($done + $failed + $no_click), 1, ".", " ") }} <i class="fa-solid fa-percent mr-1"></i>
+                                    {{ number_format($wait * 100 / ($success + $cancel + $wait), 1, ".", " ") }} <i class="fa-solid fa-percent mr-1"></i>
                                 </span>
                                 E'tiborsiz qoldirilgan
                             </span>
                         </td>
-{{--                        <td class="text-right">--}}
-{{--                            <div class="d-flex justify-content-around">--}}
-{{--                                <a href="javascript:void(0);" class="text-info" title="Ko'rish">--}}
-{{--                                    <i class="fas fa-eye mr-50"></i>--}}
-{{--                                </a>--}}
-{{--                            </div>--}}
-{{--                        </td>--}}
+                        {{--                        <td class="text-right">--}}
+                        {{--                            <div class="d-flex justify-content-around">--}}
+                        {{--                                <a href="javascript:void(0);" class="text-info" title="Ko'rish">--}}
+                        {{--                                    <i class="fas fa-eye mr-50"></i>--}}
+                        {{--                                </a>--}}
+                        {{--                            </div>--}}
+                        {{--                        </td>--}}
                     </tr>
                 @endif
             @endforeach
@@ -138,7 +152,7 @@
                             $('#datatable tbody').html(response.result)
                         }
 
-                     },
+                    },
                     error: (response) => {
                         console.log('error: ', response)
                     }

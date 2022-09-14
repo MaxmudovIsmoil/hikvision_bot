@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-dialog-centered modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel33">Add Task</h4>
+                <h4 class="modal-title" id="myModalLabel33">Vazifa +</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -12,20 +12,20 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-9 form-group">
-                            <label for="name">Name</label>
+                            <label for="name">Nomi</label>
                             <input type="text" name="name" class="form-control js_name" id="name" />
                             <div class="invalid-feedback">The full name field is required.</div>
                         </div>
                         <div class="col-md-3">
-                            <label for="remind_time">Time</label>
+                            <label for="remind_time">Vaqti</label>
                             <input type="time" name="remind_time" class="form-control js_remind_time" id="remind_time" />
                             <div class="invalid-feedback">The time field is required.</div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" name="saveBtn">Save</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary" name="saveBtn">Saqlash</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Bekor qilish</button>
                 </div>
             </form>
         </div>

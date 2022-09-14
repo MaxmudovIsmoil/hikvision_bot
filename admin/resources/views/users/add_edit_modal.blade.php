@@ -39,8 +39,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary" name="saveBtn">Save</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary" name="saveBtn">Saqlash</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Bekor qilish</button>
                 </div>
             </form>
         </div>
