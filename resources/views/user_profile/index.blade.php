@@ -5,37 +5,37 @@
      <div class="content-wrapper">
         <div class="content-body">
             <div class="card">
-                <h3 class="text-center text-info mt-2 mb-1">Edit user</h3>
+                <h3 class="text-center text-info mt-2 mb-1">Taxrirlash</h3>
                 <form action="{{ route('user.user_profile_update', [$user->id]) }}" id="js_user_profile_update_from" method="POST">
                     <div class="row mb-1 ml-1 mr-1">
                         @csrf
                         @method('PUT')
-                        <div class="col-md-6 form-group">
-                            <label for="full_name">Full Name</label>
+                        <div class="col-md-4 form-group">
+                            <label for="full_name">Ism</label>
                             <input type="text" name="full_name" class="form-control js_full_name" id="full_name" value="{{ $user->full_name }}" />
                             <div class="invalid-feedback">The full name field is required.</div>
                         </div>
 
-                        <div class="col-md-6 form-group">
-                            <label for="phone">Phone</label>
-                            <input type="text" name="phone" class="form-control js_phone" id="phone" value="{{ $user->phone }}" />
-                            <div class="invalid-feedback">The phone field is required.</div>
-                        </div>
+{{--                        <div class="col-md-6 form-group">--}}
+{{--                            <label for="phone">Phone</label>--}}
+{{--                            <input type="text" name="phone" class="form-control js_phone" id="phone" value="{{ $user->phone }}" />--}}
+{{--                            <div class="invalid-feedback">The phone field is required.</div>--}}
+{{--                        </div>--}}
 
-                        <div class="col-md-6 form-group">
-                            <label for="username">Email</label>
+                        <div class="col-md-4 form-group">
+                            <label for="username">Login</label>
                             <input type="text" name="username" class="form-control js_username" id="username" value="{{ $user->username }}" readonly />
                             <div class="invalid-feedback">The username field is required.</div>
                         </div>
 
-                        <div class="col-md-6 form-group">
-                            <label for="password">Password</label>
+                        <div class="col-md-4 form-group">
+                            <label for="password">parol</label>
                             <input type="text" name="password" class="form-control js_password" id="password" />
                             <div class="invalid-feedback">The password field is required.</div>
                         </div>
 
                         <div class="col-md-12 mt-1 mb-3">
-                            <button type="submit" class="btn btn-primary btn-block" name="saveBtn">Save</button>
+                            <button type="submit" class="btn btn-primary btn-block" name="saveBtn">Saqlash</button>
                         </div>
                     </div>
                 </form>
@@ -70,7 +70,7 @@
                     success: (response) => {
 
                         if(response.status) {
-                            window.location.href = window.location.protocol + "//" + window.location.host + "/contract/";
+                            window.location.href = window.location.protocol + "//" + window.location.host + "/user";
                             // location.reload()
                         }
                         console.log(response)

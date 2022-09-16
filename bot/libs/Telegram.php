@@ -1196,7 +1196,7 @@ class Telegram {
 	/** Get the POST request of a user in a Webhook or the message actually processed in a getUpdates() enviroment.
 	 * \return the JSON users's message
 	 */
-	
+
 	 public function getData() {
 		if (empty($this->data)) {
 			$rawData = file_get_contents("php://input");
@@ -1276,6 +1276,7 @@ class Telegram {
 	 * \return the String callback_data
 	 */
 	public function Callback_Data() {
+        // var_dump($this->data);
 		return $this->data["callback_query"]["data"];
 	}
 	/// Get the Get the message of the current callback
@@ -1541,10 +1542,10 @@ class Telegram {
 				if (($value['state'] == -1 || $value['state'] == $status) && (substr($this->Text(), 0, strlen($value['data'])) == $value['data']))
 				{
 					call_user_func(array($class, $value['function']));
-	
+
 					if ($value['continue'] != TRUE) break;
 				}
-			}	
+			}
 		}
 
 		foreach($this->handlers as $value)
@@ -1560,53 +1561,53 @@ class Telegram {
 
 	public function addCallbackHandler($function, $data, $state = -1, $continue = FALSE)
 	{
-		$handler = array('function' => $function, 'data' => $data, 'state' => $state, 'continue' => $continue);		
+		$handler = array('function' => $function, 'data' => $data, 'state' => $state, 'continue' => $continue);
 		array_push($this->handlers_callback, $handler);
 	}
 
 	public function addHandler($function, $command, $state = -1, $continue = FALSE)
 	{
-		$handler = array('function' => $function, 'command' => $command, 'state' => $state, 'type' => 'all', 'continue' => $continue);		
+		$handler = array('function' => $function, 'command' => $command, 'state' => $state, 'type' => 'all', 'continue' => $continue);
 		array_push($this->handlers, $handler);
 	}
 	public function addTextHandler($function, $command, $state, $continue = FALSE)
 	{
-		$handler = array('function' => $function, 'command' => $command, 'state' => $state, 'type' => 'text', 'continue' => $continue);		
+		$handler = array('function' => $function, 'command' => $command, 'state' => $state, 'type' => 'text', 'continue' => $continue);
 		array_push($this->handlers, $handler);
 	}
 	public function addPhotoHandler($function, $command, $state, $continue = FALSE)
 	{
-		$handler = array('function' => $function, 'command' => $command, 'state' => $state, 'type' => 'photo', 'continue' => $continue);		
+		$handler = array('function' => $function, 'command' => $command, 'state' => $state, 'type' => 'photo', 'continue' => $continue);
 		array_push($this->handlers, $handler);
 	}
 	public function addVideoHandler($function, $command, $state, $continue = FALSE)
 	{
-		$handler = array('function' => $function, 'command' => $command, 'state' => $state, 'type' => 'video', 'continue' => $continue);		
+		$handler = array('function' => $function, 'command' => $command, 'state' => $state, 'type' => 'video', 'continue' => $continue);
 		array_push($this->handlers, $handler);
 	}
 	public function addAudioHandler($function, $command, $state, $continue = FALSE)
 	{
-		$handler = array('function' => $function, 'command' => $command, 'state' => $state, 'type' => 'audio', 'continue' => $continue);		
+		$handler = array('function' => $function, 'command' => $command, 'state' => $state, 'type' => 'audio', 'continue' => $continue);
 		array_push($this->handlers, $handler);
 	}
 	public function addVoiceHandler($function, $command, $state, $continue = FALSE)
 	{
-		$handler = array('function' => $function, 'command' => $command, 'state' => $state, 'type' => 'voice', 'continue' => $continue);		
+		$handler = array('function' => $function, 'command' => $command, 'state' => $state, 'type' => 'voice', 'continue' => $continue);
 		array_push($this->handlers, $handler);
 	}
 	public function addDocumentHandler($function, $command, $state, $continue = FALSE)
 	{
-		$handler = array('function' => $function, 'command' => $command, 'state' => $state, 'type' => 'document', 'continue' => $continue);		
+		$handler = array('function' => $function, 'command' => $command, 'state' => $state, 'type' => 'document', 'continue' => $continue);
 		array_push($this->handlers, $handler);
 	}
 	public function addContactHandler($function, $command, $state, $continue = FALSE)
 	{
-		$handler = array('function' => $function, 'command' => $command, 'state' => $state, 'type' => 'contact', 'continue' => $continue);		
+		$handler = array('function' => $function, 'command' => $command, 'state' => $state, 'type' => 'contact', 'continue' => $continue);
 		array_push($this->handlers, $handler);
 	}
 	public function addLocationHandler($function, $command, $state, $continue = FALSE)
 	{
-		$handler = array('function' => $function, 'command' => $command, 'state' => $state, 'type' => 'location', 'continue' => $continue);		
+		$handler = array('function' => $function, 'command' => $command, 'state' => $state, 'type' => 'location', 'continue' => $continue);
 		array_push($this->handlers, $handler);
 	}
 

@@ -16,7 +16,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::whereNull('deleted_at')->get();
+        $tasks = Task::whereNull('deleted_at')->orderBy('remind_time', 'ASC')->get();
 
         return view('task.index', compact('tasks'));
     }

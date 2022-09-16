@@ -11,6 +11,7 @@
 
     <link rel="icon" href="{{ asset('/images/hikvision_icon.png') }}" type="image/icon">
 
+    <link rel="stylesheet" href="{{ asset('/css/jquery-ui.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('/icons-css/all.css') }}">
     <link rel="stylesheet" href="{{ asset('/fontawesome-free-6.1/css/all.css') }}">
@@ -69,7 +70,7 @@
             </a>
         </li>
         <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link @if(Request::segment(1) == 'report') active @endif" href="{{ route('report.index') }}">
+            <a class="c-sidebar-nav-link @if(Request::segment(1) == 'reports') active @endif" href="{{ route('reports') }}">
                 <svg class="c-sidebar-nav-icon">
                     <use xlink:href="{{ asset('/icons/sprites/free.svg#cil-bar-chart') }}"></use>
                 </svg> Statistika
@@ -126,14 +127,14 @@
                         <svg class="c-icon mr-2">
                             <use xlink:href="{{ asset('/icons/sprites/free.svg#cil-settings') }}"></use>
                         </svg>
-                        Setting profile
+                        Parolni o'zgartirish
                     </a>
                     <a href="{{ route('logout') }}" class="dropdown-item"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <svg class="c-icon mr-2">
                             <use xlink:href="{{ asset('/icons/sprites/free.svg#cil-account-logout') }}"></use>
                         </svg>
-                        Logout
+                        Tizimdan chiqish
                     </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
@@ -160,6 +161,7 @@
 <script src="{{ asset('/js/coreui.bundle.min.js') }}"></script>
 <!--[if IE]><!-->
 <script src="{{ asset('/js/svgxuse.min.js') }}"></script>
+<script src="{{ asset('/js/jquery-ui.js') }}"></script>
 <!--<![endif]-->
 
 <script src="{{ asset('/js/coreui-utils.js') }}"></script>

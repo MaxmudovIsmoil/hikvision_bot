@@ -4,20 +4,11 @@
 
     <div class="form-modal-ex position-relative">
         <!-- Button trigger modal -->
-        <form action="{{ route('report.get_report') }}" class="report-form js_form_report">
+        <form action="{{ route('reports') }}" class="report-form js_form_report">
             @csrf
-            {{--            <select name="user_id" class="form-control js_user_id mr-3 col-md-8">--}}
-            {{--                <option value="all">Barcha hodimlar</option>--}}
-            {{--                @foreach($users as $user)--}}
-            {{--                    <option value="{{ $user->id }}">{{ $user->full_name }}</option>--}}
-            {{--                @endforeach--}}
-            {{--            </select>--}}
-            <select name="interval" class="form-control js_interval">
-                <option value="1">Kun (Kechagi)</option>
-                <option value="2">Hafta (o'tgan)</option>
-                <option value="3" selected>Oy ({{ date('M') }})</option>
-                <option value="4">Yil</option>
-            </select>
+            <input type="text" class="form-control js_start_date js_datepicker mr-3" name="start_date" value="{{ date('d.m.Y', strtotime(isset($start_date) ? $start_date : 'last week Monday')) }}">
+            <input type="text" class="form-control js_end_date js_datepicker mr-3" name="end_date" value="{{ date('d.m.Y', strtotime(isset($end_date) ? $end_date : 'this week Monday')) }}">
+            <input type="submit" class="btn btn-primary js_btn" name="btn" value="Ko'rish">
         </form>
     </div>
 
@@ -25,81 +16,47 @@
     <div class="card">
         <table class="table table-striped w-100 table_hover" id="datatable">
             <thead class="table-light">
-            <tr>
-                <th>№</th>
-{{--                <th>test</th>--}}
-                <th>Hodim</th>
-                <th class="text-center">Natija</th>
-{{--                                    <th class="text-right">Harakat</th>--}}
-            </tr>
+                <tr>
+                    <th>№</th>
+                    <th>Hodim</th>
+                    <th>Lavorim</th>
+                    <th class="text-center">Natija</th>
+                </tr>
             </thead>
             <tbody>
-            @php $i = 1; $success = 0; $cancel = 0; $wait = 0; @endphp
-            @foreach($users as $user)
-                @if ($user->user_task_done->count())
-                    <tr class="js_this_tr" data-id="{{ $user->id }}">
-                        <td>{{ $i++ }}</td>
-                        <td>{{ $user->full_name }}</td>
-{{--                        <td>--}}
-{{--                            <div class="clearfix">--}}
-{{--                                <div class="float-start">--}}
-{{--                                    <strong>50%</strong>--}}
-{{--                                </div>--}}
-{{--                                <div class="float-end">--}}
-{{--                                    --}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="progress progress-thin">--}}
-{{--                                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div>--}}
-{{--                            </div>--}}
-{{--                        </td>--}}
-                        <td class="text-center">
-                            @foreach($user->user_task_done as $task_done)
-                                @if(date('m', strtotime($task_done->created_at)) == date('m'))
-                                    @php
-                                        if ($task_done->status == 1)
-                                            $success++;
-                                        if ($task_done->status == -1)
-                                            $cancel++;
-                                        if ($task_done->status == 0)
-                                            $wait++;
-                                    @endphp
-                                @endif
-                            @endforeach
-                            <span class="mr-1">
-                                <span class="badge badge-success badge-pill">
-                                    {{ $success }} <i class="fas fa-check mr-1"></i>
-                                    <i class="fas fa-right-long mr-1"></i>
-                                    {{ number_format($success * 100 / ($success + $cancel + $wait), 1, ".", " ") }} <i class="fa-solid fa-percent mr-1"></i>
-                                </span>
-                                Bajarilgan,
+            @php $i = 1; @endphp
+            @foreach($result as $res)
+                <tr class="js_this_tr" data-id="{{ $res['user_id'] }}">
+                    <td>{{ $i++ }}</td>
+                    <td>{{ $res['full_name'] }}</td>
+                    <td>{{ $res['job_title'] }}</td>
+                    <td class="text-center">
+                        <span class="mr-1">
+                            <span class="badge badge-success badge-pill">
+                                {{ $res['success'] }} <i class="fas fa-check mr-1"></i>
+                                <i class="fas fa-right-long mr-1"></i>
+                                {{ number_format($res['success'] * 100 / ($res['success'] + $res['cancel'] + $res['wait']), 1, ".", " ") }} <i class="fa-solid fa-percent mr-1"></i>
                             </span>
-                            <span class="mr-1">
-                                <span class="badge badge-danger badge-pill">
-                                    {{ $cancel }} <i class="fas fa-times mr-1"></i>
-                                    <i class="fas fa-right-long mr-1"></i>
-                                    {{ number_format($cancel * 100 / ($success + $cancel + $wait), 1, ".", " ") }} <i class="fa-solid fa-percent mr-1"></i>
-                                </span>
-                                Bajarilmagan,
+                            Bajarilgan,
+                        </span>
+                        <span class="mr-1">
+                            <span class="badge badge-danger badge-pill">
+                                {{ $res['cancel'] }} <i class="fas fa-times mr-1"></i>
+                                <i class="fas fa-right-long mr-1"></i>
+                                {{ number_format($res['cancel'] * 100 / ($res['success'] + $res['cancel'] + $res['wait']), 1, ".", " ") }} <i class="fa-solid fa-percent mr-1"></i>
                             </span>
-                            <span class="mr-1">
-                                <span class="badge badge-pill badge-warning">
-                                    {{ $wait }} <i class="fa-solid fa-question mr-1"></i>
-                                    <i class="fas fa-right-long mr-1"></i>
-                                    {{ number_format($wait * 100 / ($success + $cancel + $wait), 1, ".", " ") }} <i class="fa-solid fa-percent mr-1"></i>
-                                </span>
-                                E'tiborsiz qoldirilgan
+                            Bajarilmagan,
+                        </span>
+                        <span class="mr-1">
+                            <span class="badge badge-pill badge-warning">
+                                {{ $res['wait'] }} <i class="fa-solid fa-question mr-1"></i>
+                                <i class="fas fa-right-long mr-1"></i>
+                                {{ number_format($res['wait'] * 100 / ($res['success'] + $res['cancel'] + $res['wait']), 1, ".", " ") }} <i class="fa-solid fa-percent mr-1"></i>
                             </span>
-                        </td>
-                        {{--                        <td class="text-right">--}}
-                        {{--                            <div class="d-flex justify-content-around">--}}
-                        {{--                                <a href="javascript:void(0);" class="text-info" title="Ko'rish">--}}
-                        {{--                                    <i class="fas fa-eye mr-50"></i>--}}
-                        {{--                                </a>--}}
-                        {{--                            </div>--}}
-                        {{--                        </td>--}}
-                    </tr>
-                @endif
+                            E'tiborsiz qoldirilgan
+                        </span>
+                    </td>
+                </tr>
             @endforeach
 
             </tbody>
@@ -118,6 +75,8 @@
 
         $(document).ready(function () {
 
+            $( ".js_datepicker" ).datepicker({ dateFormat: 'dd.mm.yy' })
+
             $('#datatable').DataTable({
                 scrollY: '70vh',
                 scrollCollapse: true,
@@ -130,33 +89,40 @@
                 autoWidth: true,
                 language: {
                     search: "",
-                    searchPlaceholder: " Search...",
+                    searchPlaceholder: " Izlash...",
+                    language: {
+                        lengthMenu: "Har bir sahifada _MENU_ ta yozuvni ko'rsatish",
+                        zeroRecords: "Hech narsa topilmadi - kechirasiz",
+                        info: "_PAGES_ sahifadan _PAGE_ sahifa koʻrsatilmoqda",
+                        infoEmpty: "Hech qanday yozuv mavjud emas",
+                        infoFiltered: "(jami _MAX_ ta yozuvdan filtrlangan)",
+                        paginate: {
+                            'previous': 'Oldingi',
+                            'next': 'Keyingi'
+                        }
+                    }
                 }
             });
 
 
-            $('.js_interval').on('change', function (e) {
-                e.preventDefault()
-                let form = $(this).closest('.js_form_report')
-                let action = form.attr('action')
-
-                $.ajax({
-                    url: action,
-                    type: "POST",
-                    dataType: "json",
-                    data: form.serialize(),
-                    success: (response) => {
-                        console.log('res: ', response)
-
-                        if (response.status) {
-                            $('#datatable tbody').html(response.result)
-                        }
-
-                    },
-                    error: (response) => {
-                        console.log('error: ', response)
-                    }
-                })
+            $('.js_btn').on('click', function (e) {
+                // e.preventDefault()
+                // let form = $(this).closest('.js_form_report')
+                // let action = form.attr('action')
+                //
+                // $.ajax({
+                //     url: action,
+                //     type: "POST",
+                //     dataType: "json",
+                //     data: form.serialize(),
+                //     success: (response) => {
+                //         console.log('res: ', response)
+                //
+                //     },
+                //     error: (response) => {
+                //         console.log('error: ', response)
+                //     }
+                // })
             });
         });
     </script>

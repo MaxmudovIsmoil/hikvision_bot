@@ -59,8 +59,8 @@ Route::middleware(['auth', 'IsActive'])->group(function () {
 
     /******************** Report *************************/
         Route::group(['prefix' => '/'], function() {
-            Route::get('/report', [ReportController::class, 'index'])->name('report.index');
-            Route::post('/get_report', [ReportController::class, 'get_report'])->name('report.get_report');
+            Route::get('/reports', [ReportController::class, 'get_results'])->name('reports');
+//            Route::post('/get_report', [ReportController::class, 'get_report'])->name('report.get_report');
         });
         /******************** ./Template *********************/
 

@@ -17,6 +17,7 @@
                 <tr>
                     <th>№</th>
                     <th>Hodim</th>
+                    <th>Lavozim</th>
                     <th class="text-right">Harakat</th>
                 </tr>
             </thead>
@@ -27,6 +28,7 @@
                     <tr class="js_this_tr" data-id="{{ $e->id }}">
                         <td>{{ $i++ }}</td>
                         <td>{{ $e->full_name }}</td>
+                        <td>{{ $e->job_title }}</td>
                         <td class="text-right">
                             <div class="d-flex justify-content-around">
                                 <a href="javascript:void(0);" class="text-primary js_edit_btn"

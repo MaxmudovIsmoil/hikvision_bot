@@ -150,8 +150,8 @@ class UsersController extends Controller
     {
         $validation = Validator::make($request->all(), [
             'full_name' => 'required',
-            'phone'     => 'required',
-            'email'     => 'required',
+            //'phone'     => 'required',
+            //'username'  => 'required',
             'password'  => 'required|min:3',
         ]);
         if ($validation->fails()) {
@@ -165,7 +165,7 @@ class UsersController extends Controller
                 $phone = str_replace(' ', '', $request->phone);
                 $update_data = [
                     'full_name' => $request->full_name,
-                    'phone'     => $phone,
+                    //'phone'     => $phone,
                     'password'  => Hash::make($request->password),
                     'updated_at'=>  date('Y-m-d H:i:s'),
                 ];
