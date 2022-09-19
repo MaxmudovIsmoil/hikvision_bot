@@ -5383,7 +5383,7 @@
             var i, j, ret, matched, handleObj, handlerQueue,
                 args = new Array( arguments.length ),
 
-                // Make a writable jQuery.Event from the native event object
+                // Make a writable jQuery.Events from the native event object
                 event = jQuery.event.fix( nativeEvent ),
 
                 handlers = (
@@ -5391,7 +5391,7 @@
                 )[ event.type ] || [],
                 special = jQuery.event.special[ event.type ] || {};
 
-            // Use the fix-ed jQuery.Event rather than the (read-only) native event
+            // Use the fix-ed jQuery.Events rather than the (read-only) native event
             args[ 0 ] = event;
 
             for ( i = 1; i < arguments.length; i++ ) {
@@ -5707,12 +5707,12 @@
             return new jQuery.Event( src, props );
         }
 
-        // Event object
+        // Events object
         if ( src && src.type ) {
             this.originalEvent = src;
             this.type = src.type;
 
-            // Events bubbling up the document may have been marked as prevented
+            // TaskDoneOrFailEvent.php bubbling up the document may have been marked as prevented
             // by a handler lower down the tree; reflect the correct value.
             this.isDefaultPrevented = src.defaultPrevented ||
             src.defaultPrevented === undefined &&
@@ -5732,7 +5732,7 @@
             this.currentTarget = src.currentTarget;
             this.relatedTarget = src.relatedTarget;
 
-            // Event type
+            // Events type
         } else {
             this.type = src;
         }
@@ -5749,7 +5749,7 @@
         this[ jQuery.expando ] = true;
     };
 
-// jQuery.Event is based on DOM3 Events as specified by the ECMAScript Language Binding
+// jQuery.Events is based on DOM3 TaskDoneOrFailEvent.php as specified by the ECMAScript Language Binding
 // https://www.w3.org/TR/2003/WD-DOM-Level-3-Events-20030331/ecma-script-binding.html
     jQuery.Event.prototype = {
         constructor: jQuery.Event,
@@ -5926,7 +5926,7 @@
             var handleObj, type;
             if ( types && types.preventDefault && types.handleObj ) {
 
-                // ( event )  dispatched jQuery.Event
+                // ( event )  dispatched jQuery.Events
                 handleObj = types.handleObj;
                 jQuery( types.delegateTarget ).off(
                     handleObj.namespace ?
@@ -8650,7 +8650,7 @@
             }
             ontype = type.indexOf( ":" ) < 0 && "on" + type;
 
-            // Caller can pass in a jQuery.Event object, Object, or just an event type string
+            // Caller can pass in a jQuery.Events object, Object, or just an event type string
             event = event[ jQuery.expando ] ?
                 event :
                 new jQuery.Event( type, typeof event === "object" && event );

@@ -128,7 +128,7 @@
             })
 
 
-            /** TaskDone submit store or update **/
+            /** TaskDoneController submit store or update **/
             $('.js_add_edit_form').on('submit', function (e) {
                 e.preventDefault()
                 let form = $(this)

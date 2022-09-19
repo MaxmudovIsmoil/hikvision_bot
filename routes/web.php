@@ -5,6 +5,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserTaskController;
 use App\Http\Controllers\ReportController;
+use App\Helpers\Telegram;
 
 
 /*
@@ -23,8 +24,30 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Auth::routes();
 
 
+// Telegram bot
+
+//Route::get('/test', function() {
+
+//    $http = \Illuminate\Support\Facades\Http::get('https://api.tlgr.org/bot1737952789:AAHTik-cj7U-GqNEdL1UjQZc-eRYd8_E8J8/setWebhook?url=https://contract-test.etc-network.uz/');
+//    dd($http->body());
+//    $button = [
+//        'inline_keyboard' => [
+//            [
+//                [ 'text'  => 'okey',  'callback_data' => '1:1' ],
+//                [ 'text'  => 'edit btn', 'callback_data' => '1:' ]
+//            ]
+//        ]
+//    ] ;
+
+//    $sendMessage = $telegram->sendButtons('1068702247', 'test uchun', json_encode($button), '373');
+//    $sendMessage = json_decode($sendMessage);
+//    dd($sendMessage);
+
+//});
+
 
 Route::middleware(['auth', 'IsActive'])->group(function () {
+
 
 //    Admin
 //    Route::group(['middleware' => 'CheckRole:admin'], function() {
@@ -65,9 +88,6 @@ Route::middleware(['auth', 'IsActive'])->group(function () {
         /******************** ./Template *********************/
 
 //    });
-
-
-
 
 });
 

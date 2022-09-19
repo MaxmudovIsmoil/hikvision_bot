@@ -166,6 +166,8 @@ return [
          * Package Service Providers
          */
         Yajra\DataTables\DataTablesServiceProvider::class,
+        App\Helpers\Helper::class,
+        App\Helpers\Telegram::class,
 
         /*
          * Application Service Providers...
@@ -205,7 +207,7 @@ return [
         'Date' => Illuminate\Support\Facades\Date::class,
         'DB' => Illuminate\Support\Facades\DB::class,
         'Eloquent' => Illuminate\Database\Eloquent\Model::class,
-        'Event' => Illuminate\Support\Facades\Event::class,
+        'Events' => Illuminate\Support\Facades\Event::class,
         'File' => Illuminate\Support\Facades\File::class,
         'Gate' => Illuminate\Support\Facades\Gate::class,
         'Hash' => Illuminate\Support\Facades\Hash::class,
@@ -230,7 +232,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
-        'Helper' => App\Http\Helpers\Helper::class,
+        'Helper' => App\Helpers\Helper::class,
+        'Telegram' => App\Helpers\Telegram::class,
     ],
 
 ];

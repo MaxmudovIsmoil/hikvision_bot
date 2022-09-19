@@ -1,9 +1,5 @@
 <?php
 
-
-use libs\Database;
-use libs\Telegram;
-
 include_once 'config.php';
 
 include 'libs/Telegram.php';
@@ -29,7 +25,7 @@ class Bot
 
 
    public function __construct($emoji, $string)
-    { 
+    {
 
       $this->emoji = $emoji;
 
@@ -47,7 +43,7 @@ class Bot
 
 		$this->keyboard = array();
 
-		$this->keyboard['request_contact'] = 
+		$this->keyboard['request_contact'] =
 		[
 			[
                 [
@@ -56,10 +52,10 @@ class Bot
                 ]
             ],
 		];
- 
+
 	}
 
-   
+
     public function enterPhone()
     {
 

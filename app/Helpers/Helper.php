@@ -1,10 +1,7 @@
 <?php
 
-namespace App\Http\Helpers;
+namespace App\Helpers;
 
-
-use App\Models\UserPriv;
-use Illuminate\Support\Facades\Auth;
 
 class Helper {
 
@@ -24,7 +21,6 @@ class Helper {
         return $response;
 
     }
-
 
 
 //    public static function sumFormat($sum)

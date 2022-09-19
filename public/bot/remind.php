@@ -1,7 +1,5 @@
 <?php
 
-use libs\Database;
-use libs\Telegram;
 
 include_once 'config.php';
 
@@ -25,7 +23,7 @@ class Remind
 
 
   public function __construct($emoji, $string)
-  { 
+  {
 
     $this->emoji = $emoji;
 
@@ -49,7 +47,7 @@ class Remind
       $this_time = date('H:i');
 
       $tasks = $this->db->getTasks($this_time);
-      
+
       echo json_encode($tasks);
 
       foreach ($tasks as $task) {

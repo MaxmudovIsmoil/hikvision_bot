@@ -1,6 +1,5 @@
 <?php
 
-namespace libs;
 
 /**
  * Telegram Bot Class.
