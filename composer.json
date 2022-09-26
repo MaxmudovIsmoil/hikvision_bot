@@ -12,7 +12,6 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
-        "phpoffice/phpword": "^0.18.3",
         "yajra/laravel-datatables": "1.5",
         "yajra/laravel-datatables-oracle": "~9.0"
     },
@@ -26,7 +25,8 @@
     },
     "autoload": {
         "files": [
-            "/home/ismoil/bot/app/Helpers/Telegram.php"
+            "/home/ismoil/bot/app/helpers/Telegram.php",
+            "/home/ismoil/bot/app/helpers/Helper.php"
         ],
         "psr-4": {
             "App\\": "app/",

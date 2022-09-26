@@ -166,8 +166,6 @@ return [
          * Package Service Providers
          */
         Yajra\DataTables\DataTablesServiceProvider::class,
-        App\Helpers\Helper::class,
-        App\Helpers\Telegram::class,
 
         /*
          * Application Service Providers...

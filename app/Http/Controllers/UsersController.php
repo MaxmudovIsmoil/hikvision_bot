@@ -55,7 +55,7 @@ class UsersController extends Controller
                     'job_title' => $request->job_title,
                     'phone'     => $phone,
                     'status'    => (int)$request->status,
-                    'chat_id'   => 1,
+                    'chat_id'   => 0,
                     'rule'      => 'USER',
                     'username'  => "test".time(),
                     'password'  => Hash::make(123),

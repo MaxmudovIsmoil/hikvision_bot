@@ -91,10 +91,10 @@ class UserTaskController extends Controller
         }
         else {
             try {
-                if ($request->day_off1 < 10)
+                if ($request->day_off1 < 10 && strlen($request->day_off1) == 1)
                     $request->day_off1 = "0".$request->day_off1;
 
-                if ($request->day_off2 < 10)
+                if ($request->day_off2 < 10 && strlen($request->day_off1) == 1)
                     $request->day_off2 = "0".$request->day_off2;
 
                 $data = []; $i = 0;

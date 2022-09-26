@@ -76,7 +76,7 @@ class Remind
                   'parse_mode' => 'HTML',
               );
 
-              if ($this_day != $task['day_off1'] || $this_day != $task['day_off2'] || $task['rule'] != 'ADMIN') {
+              if (($this_day != $task['day_off1'] && $this_day != $task['day_off2']) && $task['rule'] != 'ADMIN') {
                   $this->telegram->sendMessage($content);
               }
 
@@ -84,6 +84,7 @@ class Remind
           } // if
 
       } // foreach
+
 
 
 //    } // while

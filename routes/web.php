@@ -5,7 +5,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserTaskController;
 use App\Http\Controllers\ReportController;
-use App\Helpers\Telegram;
+use \App\Http\Controllers\WebHookController;
 
 
 /*
@@ -26,25 +26,36 @@ Auth::routes();
 
 // Telegram bot
 
-//Route::get('/test', function() {
 
-//    $http = \Illuminate\Support\Facades\Http::get('https://api.tlgr.org/bot1737952789:AAHTik-cj7U-GqNEdL1UjQZc-eRYd8_E8J8/setWebhook?url=https://contract-test.etc-network.uz/');
+Route::get('/deleteWebhook', function() {
+
+    $http = \Illuminate\Support\Facades\Http::get('https://api.tlgr.org/bot1737952789:AAHTik-cj7U-GqNEdL1UjQZc-eRYd8_E8J8/deleteWebhook');
+    dd($http->body());
+
+});
+
+Route::get('/test', function(\App\Helpers\Telegram $telegram) {
+
+//    $http = \Illuminate\Support\Facades\Http::get('https://api.tlgr.org/bot1737952789:AAHTik-cj7U-GqNEdL1UjQZc-eRYd8_E8J8/setWebhook?url=https://contract-test.etc-network.uz/webhook');
 //    dd($http->body());
-//    $button = [
-//        'inline_keyboard' => [
-//            [
-//                [ 'text'  => 'okey',  'callback_data' => '1:1' ],
-//                [ 'text'  => 'edit btn', 'callback_data' => '1:' ]
-//            ]
-//        ]
-//    ] ;
+    $button = [
+        'keyboard' => [
+            [
+                [ 'text'  => 'okey',  'callback_data' => '1:1' ],
+                [ 'text'  => 'edit btn', 'callback_data' => '1:' ]
+            ]
+        ]
+    ] ;
 
-//    $sendMessage = $telegram->sendButtons('1068702247', 'test uchun', json_encode($button), '373');
-//    $sendMessage = json_decode($sendMessage);
-//    dd($sendMessage);
+    $sendMessage = $telegram->sendButtons('1068702247', 'test uchun', json_encode($button), '373');
+    $sendMessage = json_decode($sendMessage);
+    dd($sendMessage);
 
-//});
+});
 
+
+
+Route::post('/webhook', [WebHookController::class, 'index']);
 
 Route::middleware(['auth', 'IsActive'])->group(function () {
 
